@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "dyson"
+require "irb"
+
+Dyson.discover_devices
+
+dyson = Dyson::Client.authenticate("email", "password")
+
+$devices = dyson.devices.each(&:connect)
+
+IRB.start(__FILE__)
