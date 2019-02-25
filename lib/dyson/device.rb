@@ -125,6 +125,16 @@ module Dyson
       network[:mqtt_prefix]
     end
 
+    def air_quality
+      case pm25
+      when 0..12 then 1
+      when 13..35 then 2
+      when 36..55 then 3
+      when 56..150 then 4
+      when 151..251 then 5
+      end
+    end
+
     def temperature
       @sensor[:temperature]
     end

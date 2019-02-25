@@ -6,7 +6,7 @@ require "irb"
 
 Dyson.discover_devices
 
-dyson = Dyson::Client.authenticate("email", "password")
+dyson = Dyson::Client.authenticate(ENV["DYSON_EMAIL"], ENV["DYSON_PASSWORD"])
 
 $devices = dyson.devices.each(&:connect)
 
